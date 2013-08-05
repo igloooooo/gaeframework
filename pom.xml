@@ -20,13 +20,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.jappstart</groupId>
-    <artifactId>jappstart-web</artifactId>
+    <groupId>au.com.iglooit.gaecore</groupId>
+    <artifactId>core-web</artifactId>
     <packaging>war</packaging>
-    <name>jappstart</name>
+    <name>gaecore</name>
     <version>1.39-SNAPSHOT</version>
     <inceptionYear>2010</inceptionYear>
-    <url>http://jappstart.com</url>
+    <url>http://iglooit.com</url>
 
     <licenses>
         <license>
@@ -37,38 +37,17 @@
     </licenses>
 
     <organization>
-        <name>jappstart</name>
-        <url>http://jappstart.com</url>
+        <name>iglooit</name>
+        <url>http://iglooit.com</url>
     </organization>
 
     <developers>
         <developer>
-            <id>taylor</id>
-            <name>Taylor Leese</name>
-            <email>tleese22@gmail.com</email>
+            <id>nick</id>
+            <name>Nicholas Zhu</name>
+            <email>nichols.zu@gmail.com</email>
         </developer>
     </developers>
-
-    <mailingLists>
-        <mailingList>
-            <name>jappstart</name>
-            <subscribe>jappstart-subscribe@googlegroups.com</subscribe>
-            <unsubscribe>jappstart+unsubscribe@googlegroups.com</unsubscribe>
-            <post>jappstart@googlegroups.com</post>
-            <archive>http://groups.google.com/group/jappstart</archive>
-        </mailingList>
-    </mailingLists>
-  
-    <issueManagement>
-        <system>Google Code</system>
-        <url>http://code.google.com/p/jappstart/issues/list</url>
-    </issueManagement>
-
-    <scm>
-        <connection>scm:git:git://github.com/taylorleese/google-app-engine-jappstart.git</connection>
-        <developerConnection>scm:git:git@github.com:taylorleese/google-app-engine-jappstart.git</developerConnection>
-        <url>http://github.com/taylorleese/google-app-engine-jappstart</url>
-    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

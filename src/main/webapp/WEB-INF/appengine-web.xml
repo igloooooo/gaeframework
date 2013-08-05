@@ -32,6 +32,7 @@
 
     <resource-files>
         <exclude path="/img/**" />
+        <exclude path="/images/**" />
         <exclude path="/css/**" />
         <exclude path="/js/**" />
         <exclude path="/favicon.ico" />

@@ -1,0 +1,144 @@
+
+.nivoSlider {
+	position:relative;
+}
+.nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+/* If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	border:0;
+	padding:0;
+	margin:0;
+	z-index:6;
+	display:none;
+}
+/* The slices and boxes in the Slider */
+.nivo-slice {
+	display:block;
+	position:absolute;
+	z-index:5;
+	height:100%;
+}
+.nivo-box {
+	display:block;
+	position:absolute;
+	z-index:5;
+}
+/* Caption styles */
+.nivo-caption {
+	position:absolute;
+	/*left:0px;*/
+	bottom:0px;
+	background:#000;
+	color:#fff;
+	opacity:0.8; /* Overridden by captionOpacity setting */
+	width:100%;
+	z-index:8;
+}
+.nivo-caption p {
+	padding:5px;
+	margin:0;
+}
+.nivo-caption a {
+	display:inline !important;
+}
+.nivo-html-caption {
+    display:none;
+	float: left;
+	/*height: 100px;*/
+	left: 600px;
+	position: relative;
+	top: -300px;
+	/*width: 100px;*/
+	z-index: 9999;    
+}
+/* Direction nav styles (e.g. Next & Prev) */
+.nivo-directionNav a {
+	position:absolute;
+	top:45%;
+	z-index:9;
+	cursor:pointer;
+}
+.nivo-prevNav {
+	left:0px;
+}
+.nivo-nextNav {
+	right:0px;
+}
+/* Control nav styles (e.g. 1,2,3...) */
+.nivo-controlNav a {
+	position:relative;
+	z-index:9;
+	cursor:pointer;
+}
+.nivo-controlNav a.active {
+	font-weight:bold;
+}
+
+
+/* -----------------------------------------------------------------------------
+ *
+ * custom
+ *
+ * -------------------------------------------------------------------------- */
+ 
+ #slider {
+    position:relative;
+    width:924px; /* Change this to your images width */
+    height:360px; /* Change this to your images height */
+    /*background:url(images/loading.gif) no-repeat 50% 50%;*/
+}
+#slider img {
+    position:absolute;
+    top:0px;
+    left:0px;
+    display:none;
+}
+#slider a {
+    border:0;
+    display:block;
+}
+.nivo-controlNav {
+	left: 36px;
+	position: absolute;
+	bottom: 18px;
+}
+.nivo-controlNav a {
+	background: url(../images/circle-2.png) no-repeat;
+	cursor: pointer;
+	float: left;
+	height: 24px;
+	margin-right: 18px;
+	position: relative;
+	text-indent: -5000px;
+	width: 24px;
+	z-index: 99;
+}
+.nivo-controlNav a.active { 
+	background: url(../images/circle-1.png) no-repeat;
+}
+
+.nivo-caption { 
+	width: 212px;
+	height: 324px;
+	padding: 36px 36px 0 36px;	
+	right: 0px !important;
+}
+
+.nivo-directionNav a { 
+	display: block;
+	line-height: 36px;
+	background: #CFCD60;
+	padding: 0 1em;
+	color: black;
+	font-weight: bold;
+	text-transform: uppercase;
+}

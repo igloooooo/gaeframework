@@ -1,57 +1,115 @@
-/*
- *  Copyright (C) 2010-2012 Taylor Leese (tleese22@gmail.com)
- *
- *  This file is part of jappstart.
- *
- *  jappstart is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU Lesser General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  jappstart is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Lesser General Public License for more details.
- *
- *  You should have received a copy of the GNU Lesser General Public License
- *  along with jappstart.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-/* 
- * Sends the form as a JSON request to the server:
- *   url - the url to post the JSON request to
- *   func - the function to call on success
- */
-function sendJson(url, func) {
-    var values = {};
-    
-    $('input[type != submit]').each(function() {
-        values[this.name] = $(this).val();
-    });
+$(document).ready(function(){
 	
-    $.ajax({
-        url: url,
-        contentType: 'application/json',
-        dataType: 'json',
-        data: JSON.stringify(values),
-        type: 'post',
-        success: func
-    });
-}
+	// cufon
+	Cufon.replace('#navigation .menu-title');
+	Cufon.replace('#navigation .menu-description');
+	Cufon.replace(':header:not(#slideshow :header)', {hover: 'true'});
+    
+    // menu         
+    $('#navigation ul li').mouseenter(   
+        function() {
+            $(this).children('ul').css('display', 'none');
+            $(this).children('ul').stop(true, true);
+            $(this).children('ul').slideDown('slow');            
+        });
+    $('#navigation ul li').mouseleave(   
+        function() {
+            $(this).children('ul').css('display', 'block');
+            $(this).children('ul').stop(true, true);
+            $(this).children('ul').slideUp('slow');            
+        });               
+     
+    // prettyPhoto    
+    $("a[rel^='prettyPhoto']").prettyPhoto({
+		social_tools: false
+	});
+	
+	// image preview hover effect
+	$('a.image-preview').hover(
+		function() { $(this).find('img').fadeTo(400, 0.75); },
+		function() { $(this).find('img').fadeTo(400, 1); }
+	);	
+	$('.social a').hover(
+		function() { $(this).find('img').fadeTo(400, 0.75); },
+		function() { $(this).find('img').fadeTo(400, 1); }
+	);	
+	$('a.social').hover(
+		function() { $(this).find('img').fadeTo(400, 0.75); },
+		function() { $(this).find('img').fadeTo(400, 1); }
+	);	
+		
+	// contact form
+	function validateMyAjaxInputs() {
 
-/* 
- * Sends a JSON request to the server:
- *   values - the data to send in the JSON request
- *   url - the url to post the JSON request to
- *   func - the function to call on success 
- */
-function sendJson(values, url, func) {
-    $.ajax({
-        url: url,
-        contentType: 'application/json',
-        dataType: 'json',
-        data: JSON.stringify(values),
-        type: 'post',
-        success: func
-    });
-}
+		$.validity.start();
+		// Validator methods go here:
+		$("#name").require();
+		$("#email").require().match("email");
+		$("#subject").require();	
+		$("#message").require();
+
+		// End the validation session:
+		var result = $.validity.end();
+		return result.valid;
+	}	
+	
+	$.fn.clearForm = function() {
+	  return this.each(function() {
+	 var type = this.type, tag = this.tagName.toLowerCase();
+	 if (tag == 'form')
+	   return $(':input',this).clearForm();
+	 if (type == 'text' || type == 'password' || tag == 'textarea')
+	   this.value = '';
+	 else if (type == 'checkbox' || type == 'radio')
+	   this.checked = false;
+	 else if (tag == 'select')
+	   this.selectedIndex = -1;
+	  });
+	};	
+	
+	$("#contactform").submit(function () {
+		//  procced only if form has been validated ok with validity
+		if (validateMyAjaxInputs()) { 
+			
+			var str = $(this).serialize();
+			$.ajax({
+				type: "POST",
+				url: "php/send.php",
+				data: str,
+				success: function (msg) {
+					$("#formstatus").ajaxComplete(function (event, request, settings) {
+						// Message Sent? Show the 'Thank You' message
+						if (msg == 'OK') { 
+							result = '<div class="successmsg">Your message has been sent. Thank you!</div>';
+							$('#contactform').clearForm();
+						} else {
+							result = msg;
+						}
+						$(this).html(result);
+					});	
+				}	
+			});
+			return false;
+		}
+	});	
+	
+	// ie ...
+	var ie6 = $('html').is('.ie6');
+	var ie7 = $('html').is('.ie7');
+	var ie8 = $('html').is('.ie8');
+	
+	if (ie6 || ie7 || ie8) {
+		$('tr:nth-child(even)').css('background', '#262626');
+	}
+	
+	if (ie6 || ie7) {
+		$(function() {
+			var zIndexNumber = 10000;
+			$('div').each(function() {
+				$(this).css('zIndex', zIndexNumber);
+				zIndexNumber -= 10;
+			});
+		});
+	}
+
+});
