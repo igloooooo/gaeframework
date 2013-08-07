@@ -93,7 +93,7 @@ public class UserAccount implements Serializable {
     /**
      * The enabled status.
      */
-    private boolean enabled;
+    private boolean enabled = true;
 
     /**
      * The account non-expired status.
@@ -127,7 +127,7 @@ public class UserAccount implements Serializable {
 
         this.key = KeyFactory.createKey(getClass().getSimpleName(), username);
         this.username = username;
-        this.enabled = false;
+        this.enabled = true;
         this.accountNonExpired = true;
         this.accountNonLocked = true;
         this.credentialsNonExpired = true;
